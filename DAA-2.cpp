@@ -14,7 +14,6 @@ public:
         this->freq = freq;
     }
 };
-
 // Comparator class for the priority queue
 class Compare {
 public:
