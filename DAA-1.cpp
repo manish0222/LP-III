@@ -1,6 +1,5 @@
 #include <iostream>
 using namespace std;
-
 // Iterative Fibonacci Function
 // Time Complexity: O(n) - The loop runs n times to calculate the Fibonacci number.
 // Space Complexity: O(1) - Only a few integer variables are used.
