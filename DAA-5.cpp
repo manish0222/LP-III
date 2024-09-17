@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 class nqueen{
-    // Time Complexity: O(N!)
+// Time Complexity: O(N!)
 // Auxiliary Space: O(N2)
 public:
     int n;
