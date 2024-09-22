@@ -1,0 +1,6 @@
+1. Installation of MetaMask and study spending Ether per transaction.
+
+
+Steps
+1.   Metamask assignment got metamask website install the extension and done
+2. do transaction on this as per the ether in account
