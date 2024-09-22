@@ -2,5 +2,5 @@
 
 
 Steps
-1.   Metamask assignment got metamask website install the extension and done
-2. do transaction on this as per the ether in account
+1.   Metamask assignment goto the metamask website , then install the extension and done
+2.   do transaction on this as per the ether in account
