@@ -1,10 +1,7 @@
 #include <iostream>
 #include <vector>
-#include <cstdlib>  // for rand()
+#include <cstdlib>  // for rand() function
 using namespace std;
-// Write a program for analysis of quick sort by using deterministic and randomized variant.
-// TC   O(n log n) time complexity. worst O(n²)
-// SC   O(log n), Worst O(n)
 
 class QuickSort {
     vector<int> array;
@@ -21,27 +18,27 @@ public:
         cout << endl;
     }
 
-    // Deterministic method to find pivot
+    // Deterministic method to find pivot (pivot as the first element)
     int partition(int low, int high) {
-        int pivot = array[high];  // Pivot as the last element
-        int i = low - 1;  // Pointer for greater element
+        int pivot = array[low];  // Pivot as the first element
+        int i = low + 1;  // Start from the element after the pivot
 
-        for (int j = low; j < high; j++) {
-            if (array[j] <= pivot) {
-                i++;
+        for (int j = low + 1; j <= high; j++) {
+            if (array[j] < pivot) {
                 swap(array[i], array[j]);
+                i++;
             }
         }
-        swap(array[i + 1], array[high]);
-        return i + 1;
+        swap(array[low], array[i - 1]);  // Place the pivot in its correct position
+        return i - 1;  // Return the pivot index
     }
 
     // Randomized partition method
     int partition_random(int low, int high) {
-        int pivot = low + rand() % (high - low + 1);  // Random pivot
-        cout << "Random pivot selected: " << array[pivot] << endl;  // Print random pivot
-        swap(array[pivot], array[high]);  // Swap with the high element
-        return partition(low, high);  // Proceed with the normal partition
+        int pivot_index = low + rand() % (high - low + 1);  // Random pivot
+        cout << "Random pivot selected: " << array[pivot_index] << endl;  // Print random pivot
+        swap(array[low], array[pivot_index]);  // Move random pivot to start
+        return partition(low, high);  // Proceed with partitioning
     }
 
     // Deterministic QuickSort
