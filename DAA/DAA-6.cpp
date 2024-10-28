@@ -1,55 +1,51 @@
-#include <iostream>
-#include <vector>
-#include <cstdlib>  // for rand() function
+#include <bits/stdc++.h>
+#include <cstdlib>
 using namespace std;
 
-class QuickSort {
-    vector<int> array;
-
+class quicks {
 public:
-    QuickSort(vector<int> arr) {
-        array = arr;
+    vector<int> arr;
+
+    quicks(vector<int> array) {
+        arr = array;
     }
 
-    // Function to display the current array
-    void displayArray() {
-        for (int i : array)
-            cout << i << " ";
+    void display() {
+        for (auto i : arr) cout << i << " ";
         cout << endl;
     }
 
-    // Deterministic method to find pivot (pivot as the first element)
+    // Deterministic partition with the pivot as the first element
     int partition(int low, int high) {
-        int pivot = array[low];  // Pivot as the first element
-        int i = low + 1;  // Start from the element after the pivot
+        int pivot = arr[low];
+        int i = low + 1;
 
         for (int j = low + 1; j <= high; j++) {
-            if (array[j] < pivot) {
-                swap(array[i], array[j]);
-                i++;
+            if (arr[j] < pivot) {
+                swap(arr[i++], arr[j]);
             }
         }
-        swap(array[low], array[i - 1]);  // Place the pivot in its correct position
-        return i - 1;  // Return the pivot index
+        swap(arr[low], arr[i - 1]);  // Place pivot at its correct position
+        return i - 1;
     }
 
-    // Randomized partition method
+    // Randomized partition with a random pivot
     int partition_random(int low, int high) {
-        int pivot_index = low + rand() % (high - low + 1);  // Random pivot
-        cout << "Random pivot selected: " << array[pivot_index] << endl;  // Print random pivot
-        swap(array[low], array[pivot_index]);  // Move random pivot to start
-        return partition(low, high);  // Proceed with partitioning
+        int pivot = low + rand() % (high - low + 1);  // Random pivot index
+        cout << "Randomized pivot: " << arr[pivot] << endl;
+        swap(arr[low], arr[pivot]);  // Move pivot to the beginning
+        return partition(low, high);
     }
 
     // Deterministic QuickSort
     void sort_d(int low, int high) {
         if (low < high) {
             int pivot = partition(low, high);
-            cout << "Array after deterministic partition (pivot: " << array[pivot] << "): ";
-            displayArray();
+            cout << "Array after deterministic partition (pivot: " << arr[pivot] << "): ";
+            display();
 
-            sort_d(low, pivot - 1);  // Sort elements before partition
-            sort_d(pivot + 1, high);  // Sort elements after partition
+            sort_d(low, pivot - 1);
+            sort_d(pivot + 1, high);
         }
     }
 
@@ -57,41 +53,39 @@ public:
     void sort_r(int low, int high) {
         if (low < high) {
             int pivot = partition_random(low, high);
-            cout << "Array after randomized partition (pivot: " << array[pivot] << "): ";
-            displayArray();
+            cout << "Array after randomized partition (pivot: " << arr[pivot] << "): ";
+            display();
 
-            sort_r(low, pivot - 1);  // Sort elements before partition
-            sort_r(pivot + 1, high);  // Sort elements after partition
+            sort_r(low, pivot - 1);
+            sort_r(pivot + 1, high);
         }
-    }
-
-    void display() {
-        cout << "Final sorted array: ";
-        displayArray();
     }
 };
 
 int main() {
-    int n;  // Size of the array
+    srand(time(0));  // Seed for random number generation
+
     cout << "Enter the number of elements in the array: ";
+    int n;
     cin >> n;
 
-    vector<int> array(n);  // Vector to store the elements
+    vector<int> v(n);
     cout << "Enter the elements of the array: ";
-
     for (int i = 0; i < n; i++) {
-        cin >> array[i];  // Input each element
+        cin >> v[i];
     }
 
-    cout << "Deterministic variant of sort:" << endl;
-    QuickSort sort1(array);
-    sort1.sort_d(0, n - 1);
-    sort1.display();
+    cout << "\nDeterministic QuickSort:\n";
+    quicks obj1(v);
+    obj1.sort_d(0, n - 1);
+    cout << "Final array after deterministic QuickSort: ";
+    obj1.display();
 
-    cout << "\nRandomized variant of sort:" << endl;
-    QuickSort sort2(array);
-    sort2.sort_r(0, n - 1);
-    sort2.display();
-
+    cout << "\nRandomized QuickSort:\n";
+    quicks obj2(v);
+    obj2.sort_r(0, n - 1);
+    cout << "Final array after randomized QuickSort: ";
+    obj2.display();
+    
     return 0;
 }
