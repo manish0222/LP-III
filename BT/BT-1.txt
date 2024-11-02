@@ -4,3 +4,8 @@
 Steps
 1.   Metamask assignment goto the metamask website , then install the extension and done
 2.   do transaction on this as per the ether in account
+
+
+spend ether using test network
+refer 
+https://chatgpt.com/share/6724a49a-9134-8006-99b3-9189042dc28c
