@@ -1,3 +1,46 @@
+//FOR 0 1 knapsack not fractional using dp and memoization
+// int solve(int ind,int w,vector<int>& wt, vector<int>& val,vector<vector<int>>&dp){
+//     if(ind==0){
+//         if(wt[ind]<=w) return val[ind];
+//         return 0;
+//     }
+//     if(dp[ind][w]!=-1) return dp[ind][w];
+//     int notpick=solve(ind-1,w,wt,val,dp);
+//     int pick=INT_MIN;
+//     if(wt[ind]<=w){
+//         pick=val[ind]+solve(ind-1,w-wt[ind],wt,val,dp);
+//     }
+//     return dp[ind][w]=max(pick,notpick);
+// }
+// vector<vector<int>> dp(n+1,vector<int> (W+1,-1));
+// return solve(n-1,W,wt,val,dp);
+
+
+
+//      FOR KNAPSACK USING DP AND NO ITERATIVE USE BELOW FUNCTION
+//     // Function to return max value that can be put in knapsack of capacity W.
+//     int knapSack(int W, vector<int>& wt, vector<int>& val) {
+//         // Your code here
+//         int n=wt.size();
+//         vector<vector<int>> dp(n+1,vector<int> (W+1,0));
+//         for(int i=wt[0];i<=W;i++){
+//             dp[0][i]=val[0];
+//         }
+//         for(int ind=1;ind<n;ind++){
+//             for(int w=0;w<=W;w++){
+//                 int notpick=dp[ind-1][w];
+//                 int pick=INT_MIN;
+//                 if(wt[ind]<=w){
+//                     pick=val[ind]+dp[ind-1][w-wt[ind]];
+//                 }
+//                 dp[ind][w]=max(pick,notpick);
+//             }
+//         }
+//         return dp[n-1][W];
+//     }
+// };
+
+            //   CODE FOR FRACTIONAL KNAPSACK
 #include <bits/stdc++.h>
 using namespace std;
 // Class for an item which stores weight and
