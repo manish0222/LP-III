@@ -1,7 +1,10 @@
 #include <bits/stdc++.h>
 #include <cstdlib>
 using namespace std;
-
+/*
+TC BEST o(nlogn) worst o(N^2)
+SC BEST o(logn) worst o(N)
+*/
 class quicks {
 public:
     vector<int> arr;
